@@ -6,6 +6,7 @@
     <modules>
         <module>eureka-discovery-server</module>
         <module>users-service</module>
+        <module>accounts-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
