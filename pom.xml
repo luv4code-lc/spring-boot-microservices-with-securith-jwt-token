@@ -7,6 +7,7 @@
         <module>eureka-discovery-server</module>
         <module>users-service</module>
         <module>accounts-service</module>
+        <module>zuul-api-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
