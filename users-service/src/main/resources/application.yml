@@ -6,6 +6,15 @@ spring:
   devtools:
     restart:
       enabled: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+  jpa:
+    defer-datasource-initialization: true
 eureka:
   client:
     service-url:
@@ -14,6 +23,7 @@ eureka:
     register-with-eureka: true
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
 
 management:
   endpoints:
