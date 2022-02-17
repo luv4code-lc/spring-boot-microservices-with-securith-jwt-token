@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -52,5 +53,10 @@ public class UsersServiceImpl implements UsersService {
         UserEntity userEntity = usersRepository.findByEmail(email);
         if (userEntity == null) throw new UsernameNotFoundException(email);
         return new ModelMapper().map(userEntity, UserDto.class);
+    }
+
+    @Override
+    public List<UserEntity> findAll() {
+        return usersRepository.findAll();
     }
 }

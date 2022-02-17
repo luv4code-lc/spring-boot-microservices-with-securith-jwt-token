@@ -1,5 +1,6 @@
 package com.luv4code.users.service.api.ui.controller;
 
+import com.luv4code.users.service.api.data.UserEntity;
 import com.luv4code.users.service.api.service.UsersService;
 import com.luv4code.users.service.api.shared.UserDto;
 import com.luv4code.users.service.api.ui.model.CreateUserRequestModel;
@@ -7,15 +8,14 @@ import com.luv4code.users.service.api.ui.model.CreateUserResponseModel;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -23,6 +23,13 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UsersService usersService;
+    private final Environment environment;
+
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<List<UserEntity>> getAllUsers() {
+        List<UserEntity> usersList = usersService.findAll();
+        return new ResponseEntity<>(usersList, HttpStatus.OK);
+    }
 
     @PostMapping(
             consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

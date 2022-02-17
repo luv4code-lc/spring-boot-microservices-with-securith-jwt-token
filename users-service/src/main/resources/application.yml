@@ -34,7 +34,7 @@ gateway:
   ip: 192.168.43.170
 token:
   expiration_time: 864000000
-  secret: allsdjl3252l5Adl87soa14fdahbnccg544084sl
+  secret: hfgry463hf746hf573ydh475fhy5739
 login:
   url:
     path: /users/login
